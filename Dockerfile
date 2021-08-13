@@ -1,6 +1,6 @@
 FROM php:7.3-cli
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1.10.22 /usr/bin/composer /usr/bin/composer
 
 RUN apt update && apt install -y wget git zip
 
