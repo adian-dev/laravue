@@ -4,14 +4,14 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN apt update && apt install -y wget git zip
 
-RUN apt install -y libzip-dev libonig-dev libxml2-dev libssh2-1-dev
+RUN apt install -y libzip-dev libonig-dev libxml2-dev libssh2-1-dev libpng-dev
 
 RUN curl http://pecl.php.net/get/ssh2-1.2.tgz -o ssh2.tgz && \
     pecl install ssh2 ssh2.tgz && \
     docker-php-ext-enable ssh2 && \
     rm -rf ssh2.tgz
 
-RUN docker-php-ext-install zip ctype fileinfo json mbstring pdo tokenizer xml pdo_mysql
+RUN docker-php-ext-install zip ctype fileinfo json mbstring pdo tokenizer xml pdo_mysql gd
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
